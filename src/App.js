@@ -1,11 +1,16 @@
+import { Route, Routes } from 'react-router-dom';
 import './App.css';
+import Home from './components/pages/Home/Home';
 import Navbar from './components/sharedPages/Navbar';
 
 function App() {
   return (
     <div className="App">
       <Navbar></Navbar>
-      <p className='text-5xl'>HEllo world</p>
+      <Routes>
+        <Route path='/' element={<Home></Home>} />
+        <Route path='/home' element={<Home></Home>} />
+      </Routes>
     </div>
   );
 }
