@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
 const UpdateProduct = () => {
@@ -6,6 +6,8 @@ const UpdateProduct = () => {
 
     const [product, setProduct] = useState({});
     const { name, image, description, price, quantity, supplier } = product;
+
+    const quantityIncrementRef = useRef(0);
 
     // updating the ui each time an update messege comes from the server
     const [updateMsg, setUpdateMsg] = useState({});
@@ -18,7 +20,7 @@ const UpdateProduct = () => {
     }, [updateMsg]);
 
     const decreaseQuantityByOne = () => {
-        const newQuantity = quantity - 1;
+        const newQuantity = parseInt(quantity) - 1;
         const url = `http://localhost:5000/products/${id}`;
         fetch(url, {
             method: 'PATCH',
@@ -32,6 +34,23 @@ const UpdateProduct = () => {
             .then((response) => response.json())
             .then((json) => setUpdateMsg(json));
     };
+
+    const increaseQuantity = (event) => {
+        event.preventDefault();
+        const newQuantity = parseInt(quantity) + parseInt(quantityIncrementRef.current.value);
+        const url = `http://localhost:5000/products/${id}`;
+        fetch(url, {
+            method: 'PATCH',
+            body: JSON.stringify({
+                quantity: newQuantity,
+            }),
+            headers: {
+                'Content-type': 'application/json; charset=UTF-8',
+            },
+        })
+            .then((response) => response.json())
+            .then((json) => setUpdateMsg(json));
+    }
 
     return (
         <div className='container mx-auto flex'>
@@ -47,7 +66,7 @@ const UpdateProduct = () => {
                         <span className='font-semibold'>{supplier}</span>
                     </p>
                 </div>
-                <div className='flex'>
+                <div className='flex mb-3'>
                     <p className='mr-3 my-auto'>Quantity:
                         <span className='font-semibold'>{quantity}</span>
                     </p>
@@ -56,6 +75,19 @@ const UpdateProduct = () => {
                         className='text-xl text-white font-semibold bg-blue-400 rounded-md px-3 py-1 hover:bg-blue-500'
                     >Delevered</button>
                 </div>
+                <form onSubmit={increaseQuantity}>
+                    <input
+                        className='bg-blue-200 rounded-md px-3 py-1 mr-3'
+                        type='number'
+                        min='0'
+                        ref={quantityIncrementRef}
+                    ></input>
+                    <input
+                        className='text-xl text-white font-semibold bg-blue-400 rounded-md px-3 py-1 hover:bg-blue-500'
+                        type='submit'
+                        value='Restock'
+                    ></input>
+                </form>
             </div>
         </div>
     );
