@@ -1,12 +1,19 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const HomeProduct = ({ product }) => {
-    const { name, image, description, price, quantity, supplier } = product;
+    const { _id, name, image, description, price, quantity, supplier } = product;
+    const navigate = useNavigate();
+
+    const navigateToUpdate = (id) => {
+        navigate(`/products/${id}`);
+    }
+
     return (
         <div className='text-left shadow-md shadow-blue-400 p-5 rounded-md'>
             <div className='flex justify-between mb-5'>
-                <img className='w-1/3 mr-5 rounded-md' src={image}></img>
-                <div className='my-auto'>
+                <img className='h-40 w-40 rounded-md' src={image}></img>
+                <div className='my-auto ml-5'>
                     <h3 className='text-3xl font-semibold mb-5'>{name}</h3>
                     <div className='flex text-base'>
                         <small className='mr-3'>Price: <span className='font-semibold'>${price}</span></small>
@@ -16,7 +23,10 @@ const HomeProduct = ({ product }) => {
                 </div>
             </div>
             <p className='text-xl leading-relaxed mb-5'>{description}</p>
-            <button className='text-xl text-white font-semibold bg-blue-400 rounded-md px-3 py-1 hover:bg-blue-500'>Update</button>
+            <button
+                onClick={() => navigateToUpdate (_id)}
+                className='text-xl text-white font-semibold bg-blue-400 rounded-md px-3 py-1 hover:bg-blue-500'
+            >Update</button>
         </div>
     );
 };
