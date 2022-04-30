@@ -1,19 +1,32 @@
 import React, { useRef } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import auth from '../../../firebase.init';
-import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 
 const Login = () => {
-    const [signInWithGoogle, googleUser, GoogleLoading, GoogleError] = useSignInWithGoogle(auth);
-
     const emailRef = useRef('');
     const passwordRef = useRef('');
+    const navigate = useNavigate();
 
-    const handleSignInWithEmailAndPass = () => {
+    const [signInWithGoogle, googleUser, GoogleLoading, GoogleError] = useSignInWithGoogle(auth);
+
+    const [
+        signInWithEmailAndPassword,
+        user,
+        loading,
+        error,
+    ] = useSignInWithEmailAndPassword(auth);
+
+    if (user) {
+        navigate('/home');
+    };
+
+    const handleSignInWithEmailAndPass = (event) => {
+        event.preventDefault();
         const email = emailRef.current.value;
         const password = passwordRef.current.value;
-        
-    }
+        signInWithEmailAndPassword(email, password);
+    };
 
     return (
         <div className='container mx-auto'>
