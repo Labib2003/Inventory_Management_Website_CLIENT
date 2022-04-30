@@ -1,9 +1,18 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import useProducts from '../../../hooks/useProducts';
+import { useEffect, useState } from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import auth from '../../../firebase.init';
+import Product from '../Home/Product/Product';
 
-const ManageInvntory = () => {
-    const [products, setProducts] = useProducts();
+const MyItems = () => {
+    const [user, loading, error] = useAuthState(auth);
+
+    const [myItems, setMyItems] = useState([]);
+    useEffect(() => {
+        const email = user.email
+        fetch(`http://localhost:5000/myItems?email=${email}`)
+            .then((response) => response.json())
+            .then((json) => setMyItems(json))
+    },[user]);
 
     const handleDelete = (id) => {
         const url = `http://localhost:5000/products/${id}`;
@@ -15,28 +24,27 @@ const ManageInvntory = () => {
                 .then(res => res.json())
                 .then(data => {
                     console.log(data);
-                    const remaining = products.filter(service => service._id !== id);
-                    setProducts(remaining);
+                    const remaining = myItems.filter(service => service._id !== id);
+                    setMyItems(remaining);
                 });
         };
     };
 
     return (
         <div className='container mx-auto'>
+            <h3 className='text-3xl font-semibold my-5'>Items Added By: {user.email}</h3>
             <table className='w-full text-left text-xl mb-5'>
                 <thead>
                     <tr>
                         <th className='border border-black p-1'>Name</th>
-                        <th className='border border-black p-1'>Added By</th>
                         <th className='border border-black p-1'>Quantity</th>
                         <th className='border border-black p-1'>X</th>
                     </tr>
                 </thead>
                 <tbody>
                     {
-                        products.map(product => <tr key={product._id}>
+                        myItems.map(product => <tr key={product._id}>
                             <td className='border border-black p-1'>{product.name}</td>
-                            <td className='border border-black p-1'>{product.user}</td>
                             <td className='border border-black p-1'>{product.quantity}</td>
                             <td
                                 onClick={() => handleDelete(product._id)}
@@ -46,9 +54,7 @@ const ManageInvntory = () => {
                     }
                 </tbody>
             </table>
-            <Link className='text-xl text-white font-semibold bg-blue-400 rounded-md px-3 py-1 hover:bg-blue-500 mx-auto' to='/add'>Add New Item</Link>
         </div>
     );
 };
-
-export default ManageInvntory;
+export default MyItems;

@@ -6,6 +6,7 @@ import Home from './components/pages/Home/Home';
 import Login from './components/pages/Login/Login';
 import Register from './components/pages/Login/Register';
 import ManageInvntory from './components/pages/ManageInventory/ManageInvntory';
+import MyItems from './components/pages/MyItems/MyItems';
 import PageNotFound from './components/pages/PageNotFound/PageNotFound';
 import UpdateProduct from './components/pages/UpdateProduct/UpdateProduct';
 import Footer from './components/sharedPages/Footer';
@@ -30,6 +31,9 @@ function App() {
         </RequireAuth>} />
         <Route path='/add' element={<RequireAuth>
           <AddItem></AddItem>
+        </RequireAuth>} />
+        <Route path='/myItems' element={<RequireAuth>
+          <MyItems></MyItems>
         </RequireAuth>} />
         <Route path='*' element={<PageNotFound></PageNotFound>} />
       </Routes>
