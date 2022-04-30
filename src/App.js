@@ -7,6 +7,7 @@ import Register from './components/pages/Login/Register';
 import ManageInvntory from './components/pages/ManageInventory/ManageInvntory';
 import PageNotFound from './components/pages/PageNotFound/PageNotFound';
 import UpdateProduct from './components/pages/UpdateProduct/UpdateProduct';
+import Footer from './components/sharedPages/Footer';
 import Navbar from './components/sharedPages/Navbar';
 import RequireAuth from './components/sharedPages/RequireAuth';
 
@@ -23,9 +24,12 @@ function App() {
         <Route path='/products/:id' element={<RequireAuth>
           <UpdateProduct></UpdateProduct>
         </RequireAuth>} />
-        <Route path='/manage' element={<ManageInvntory></ManageInvntory>} />
+        <Route path='/manage' element={<RequireAuth>
+          <ManageInvntory></ManageInvntory>
+        </RequireAuth>} />
         <Route path='*' element={<PageNotFound></PageNotFound>} />
       </Routes>
+      <Footer></Footer>
     </div>
   );
 }
