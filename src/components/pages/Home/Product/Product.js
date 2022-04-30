@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const HomeProduct = ({ product }) => {
+const Product = ({ product }) => {
     const { _id, name, image, description, price, quantity, supplier } = product;
     const navigate = useNavigate();
 
@@ -26,9 +26,9 @@ const HomeProduct = ({ product }) => {
             <button
                 onClick={() => navigateToUpdate (_id)}
                 className='text-xl text-white font-semibold bg-blue-400 rounded-md px-3 py-1 hover:bg-blue-500'
-            >Update</button>
+            >Update Stock</button>
         </div>
     );
 };
 
-export default HomeProduct;
+export default Product;

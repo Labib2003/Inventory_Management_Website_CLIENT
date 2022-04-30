@@ -5,7 +5,7 @@ const UpdateProduct = () => {
     const { id } = useParams();
 
     const [product, setProduct] = useState({});
-    const { name, image, description, price, quantity, supplier } = product;
+    const { name, user, image, description, price, quantity, supplier } = product;
 
     const quantityIncrementRef = useRef(0);
 
@@ -19,8 +19,7 @@ const UpdateProduct = () => {
             .then(data => setProduct(data));
     }, [updateMsg]);
 
-    const decreaseQuantityByOne = () => {
-        const newQuantity = parseInt(quantity) - 1;
+    const updateQuantity = (newQuantity) => {
         const url = `http://localhost:5000/products/${id}`;
         fetch(url, {
             method: 'PATCH',
@@ -35,28 +34,23 @@ const UpdateProduct = () => {
             .then((json) => setUpdateMsg(json));
     };
 
+    const decreaseQuantityByOne = () => {
+        const newQuantity = parseInt(quantity) - 1;
+        updateQuantity(newQuantity);
+    };
+
     const increaseQuantity = (event) => {
         event.preventDefault();
         const newQuantity = parseInt(quantity) + parseInt(quantityIncrementRef.current.value);
-        const url = `http://localhost:5000/products/${id}`;
-        fetch(url, {
-            method: 'PATCH',
-            body: JSON.stringify({
-                quantity: newQuantity,
-            }),
-            headers: {
-                'Content-type': 'application/json; charset=UTF-8',
-            },
-        })
-            .then((response) => response.json())
-            .then((json) => setUpdateMsg(json));
-    }
+        updateQuantity(newQuantity);
+    };
 
     return (
         <div className='container mx-auto flex'>
             <img className='w-1/3 mr-10' src={image}></img>
             <div className='text-left my-auto'>
                 <h3 className='text-3xl font-semibold mb-5'>{name}</h3>
+                <p className='text-xl mb-3'>Added By: <span className='font-semibold'>{user}</span></p>
                 <p className='text-xl mb-3'>{description}</p>
                 <div className='flex mb-3'>
                     <p className='mr-3'>Price:
@@ -73,7 +67,7 @@ const UpdateProduct = () => {
                     <button
                         onClick={decreaseQuantityByOne}
                         className='text-xl text-white font-semibold bg-blue-400 rounded-md px-3 py-1 hover:bg-blue-500'
-                    >Delevered</button>
+                    >Deliver</button>
                 </div>
                 <form onSubmit={increaseQuantity}>
                     <input
