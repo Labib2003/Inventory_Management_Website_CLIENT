@@ -8,7 +8,7 @@ const Login = () => {
     const passwordRef = useRef('');
     const navigate = useNavigate();
 
-    const [signInWithGoogle, googleUser, GoogleLoading, GoogleError] = useSignInWithGoogle(auth);
+    const [signInWithGoogle, googleUser, googleLoading, googleError] = useSignInWithGoogle(auth);
 
     const [
         signInWithEmailAndPassword,
@@ -56,6 +56,9 @@ const Login = () => {
                             to='/register'
                             className='text-blue-400 hover:text-blue-500'
                         >Register</Link>.
+                    </p>
+                    <p className='text-red-500 font-semibold mb-3'>
+                        {(error || googleError) ? `${error ? error?.message : ''} ${googleError ? googleError?.message : ''}` : ''}
                     </p>
                     <input
                         className='w-2/3 mx-auto text-white bg-blue-400 hover:bg-blue-500 rounded-md px-3 py-1 mb-3'
