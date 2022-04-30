@@ -6,6 +6,7 @@ import Register from './components/pages/Login/Register';
 import PageNotFound from './components/pages/PageNotFound/PageNotFound';
 import UpdateProduct from './components/pages/UpdateProduct/UpdateProduct';
 import Navbar from './components/sharedPages/Navbar';
+import RequireAuth from './components/sharedPages/RequireAuth';
 
 function App() {
   return (
@@ -16,7 +17,9 @@ function App() {
         <Route path='/home' element={<Home></Home>} />
         <Route path='/login' element={<Login></Login>} />
         <Route path='/register' element={<Register></Register>} />
-        <Route path='/products/:id' element={<UpdateProduct></UpdateProduct>} />
+        <Route path='/products/:id' element={<RequireAuth>
+          <UpdateProduct></UpdateProduct>
+        </RequireAuth>} />
         <Route path='*' element={<PageNotFound></PageNotFound>} />
       </Routes>
     </div>

@@ -19,7 +19,6 @@ const UpdateProduct = () => {
 
     const decreaseQuantityByOne = () => {
         const newQuantity = quantity - 1;
-        console.log(newQuantity);
         const url = `http://localhost:5000/products/${id}`;
         fetch(url, {
             method: 'PATCH',
