@@ -40,24 +40,40 @@ export default function Navbar({ fixed }) {
                     >
                         <ul className="flex flex-col lg:flex-row list-none lg:ml-auto">
                             <li className="nav-item">
-                            <Link
+                                <Link
                                     className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75 ml-2"
                                     to='/inventory'
                                 >All Products</Link>
                             </li>
                             <li className="nav-item">
-                                <Link
-                                    className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75 ml-2"
-                                    to='/manage'
-                                >Manage Products</Link>
-                            </li>
-                            <li className="nav-item">
                                 {
                                     user ?
-                                        <button
-                                            onClick={handleLogut}
-                                            className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75 ml-2"
-                                        >Logout</button>
+                                        <ul className="flex flex-col lg:flex-row list-none lg:ml-auto">
+                                            <li className="nav-item">
+                                                <Link
+                                                    className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75 ml-2"
+                                                    to='/manage'
+                                                >Manage Products</Link>
+                                            </li>
+                                            <li className="nav-item">
+                                                <Link
+                                                    className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75 ml-2"
+                                                    to='/myItems'
+                                                >My Prouducts</Link>
+                                            </li>
+                                            <li className="nav-item">
+                                                <Link
+                                                    className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75 ml-2"
+                                                    to='/add'
+                                                >Add Products</Link>
+                                            </li>
+                                            <li
+                                                onClick={handleLogut}
+                                                className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75 ml-2 cursor-pointer"
+                                            >
+                                                Logout
+                                            </li>
+                                        </ul>
                                         :
                                         <Link
                                             className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75"
