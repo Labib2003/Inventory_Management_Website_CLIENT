@@ -43,6 +43,7 @@ const UpdateProduct = () => {
         event.preventDefault();
         const newQuantity = parseInt(quantity) + parseInt(quantityIncrementRef.current.value);
         updateQuantity(newQuantity);
+        quantityIncrementRef.current.value = 0;
     };
 
     return (

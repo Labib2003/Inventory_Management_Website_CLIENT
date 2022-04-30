@@ -1,5 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
+import AddItem from './components/pages/AddItem/AddItem';
 import AllProducts from './components/pages/AllProducts/AllProducts';
 import Home from './components/pages/Home/Home';
 import Login from './components/pages/Login/Login';
@@ -26,6 +27,9 @@ function App() {
         </RequireAuth>} />
         <Route path='/manage' element={<RequireAuth>
           <ManageInvntory></ManageInvntory>
+        </RequireAuth>} />
+        <Route path='/add' element={<RequireAuth>
+          <AddItem></AddItem>
         </RequireAuth>} />
         <Route path='*' element={<PageNotFound></PageNotFound>} />
       </Routes>

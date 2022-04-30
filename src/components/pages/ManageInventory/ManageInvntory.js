@@ -6,16 +6,18 @@ const ManageInvntory = () => {
 
     const handleDelete = (id) => {
         const url = `http://localhost:5000/products/${id}`;
-        console.log(url);
-        fetch(url, {
-            method: 'DELETE',
-        })
-            .then(res => res.json())
-            .then(data => {
-                console.log(data);
-                const remaining = products.filter(service => service._id !== id);
-                setProducts(remaining);
+        const confirm = window.confirm("Are you sure?");
+        if (confirm) {
+            fetch(url, {
+                method: 'DELETE',
             })
+                .then(res => res.json())
+                .then(data => {
+                    console.log(data);
+                    const remaining = products.filter(service => service._id !== id);
+                    setProducts(remaining);
+                });
+        };
     };
 
     return (
