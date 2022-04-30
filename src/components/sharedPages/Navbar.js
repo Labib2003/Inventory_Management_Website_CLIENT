@@ -1,8 +1,15 @@
+import { signOut } from "firebase/auth";
 import React from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
 import { Link } from "react-router-dom";
+import auth from "../../firebase.init";
 
 export default function Navbar({ fixed }) {
     const [navbarOpen, setNavbarOpen] = React.useState(false);
+    const [user, loading, error] = useAuthState(auth);
+    const handleLogut = () => {
+        signOut(auth);
+    };
     return (
         <>
             <nav className="relative flex flex-wrap items-center justify-between px-2 py-3 bg-blue-400 mb-3">
@@ -49,12 +56,20 @@ export default function Navbar({ fixed }) {
                                 </a>
                             </li>
                             <li className="nav-item">
-                                <Link
-                                    className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75"
-                                    to="/login"
-                                >
-                                    <span className="ml-2">Login</span>
-                                </Link>
+                                {
+                                    user ?
+                                        <button
+                                            onClick={handleLogut}
+                                            className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75 ml-2"
+                                        >Logout</button>
+                                        :
+                                        <Link
+                                            className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75"
+                                            to="/login"
+                                        >
+                                            <span className="ml-2">Login</span>
+                                        </Link>
+                                }
                             </li>
                         </ul>
                     </div>
