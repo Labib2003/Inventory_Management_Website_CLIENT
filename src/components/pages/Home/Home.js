@@ -6,7 +6,7 @@ import ReportBug from './ReportBug/ReportBug';
 
 const Home = () => {
     return (
-        <div>
+        <div className='p-3'>
             <Banner></Banner>
             <HomeProducts></HomeProducts>
             <Dashboard></Dashboard>

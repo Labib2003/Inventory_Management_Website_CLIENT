@@ -7,18 +7,16 @@ const Dashboard = () => {
     return (
         <div className='container mx-auto mb-10'>
             <h3 className='text-3xl font-semibold mb-5'>Product Stock:</h3>
-            <BarChart className='mx-auto'
-                width={900}
-                height={500}
-                data={products}
-            >
-                <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="name" />
-                <YAxis />
-                <Tooltip />
-                <Legend />
-                <Bar dataKey="quantity" fill="#60A5FA" />
-            </BarChart>
+            <ResponsiveContainer width="95%" height={400}>
+                <BarChart className='mx-auto' data={products}>
+                    <CartesianGrid strokeDasharray="3 3" />
+                    <XAxis dataKey="name" />
+                    <YAxis />
+                    <Tooltip />
+                    <Legend />
+                    <Bar dataKey="quantity" fill="#60A5FA" />
+                </BarChart>
+            </ResponsiveContainer>
         </div>
     );
 };

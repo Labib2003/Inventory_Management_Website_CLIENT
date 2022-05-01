@@ -10,7 +10,7 @@ const HomeProducts = () => {
     return (
         <div className='container mx-auto mb-10'>
             <h3 className='text-3xl font-semibold mb-5'>Inventory (Total items: {products.length})</h3>
-            <div className='grid grid-cols-2 gap-5 mb-5'>
+            <div className='grid grid-cols-1 lg:grid-cols-2 gap-5 mb-5'>
                 {
                     firstSixProducts.map(product => <Product
                         key={product._id}

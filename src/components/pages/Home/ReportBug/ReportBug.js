@@ -49,7 +49,7 @@ const ReportBug = () => {
     return (
         <div className='container mx-auto'>
             <div className='flex justify-around'>
-                <img className='w-1/3' src='technical-diff.svg'></img>
+                <img className='hidden md:block w-1/4' src='technical-diff.svg'></img>
                 <div className='my-auto'>
                     <p className='text-xl font-semibold mb-3'>Having an issue? Report it and we will fix it ASAP!</p>
                     <form onSubmit={handleReportBug} className='flex flex-col'>

@@ -44,9 +44,9 @@ const AddItem = () => {
     }
 
     return (
-        <div className='container mx-auto'>
+        <div className='container mx-auto p-3'>
             <h3 className='text-3xl font-semibold my-5'>Fill in this form to add a new item.</h3>
-            <form onSubmit={handleAddNewItem} className='flex flex-col text-xl w-1/2 mx-auto'>
+            <form onSubmit={handleAddNewItem} className='flex flex-col text-xl w-full md:w-1/2 mx-auto'>
                 <input
                     className='bg-blue-100 rounded-md px-3 py-1 mb-3 text-black'
                     type='email'
@@ -83,9 +83,9 @@ const AddItem = () => {
                     ref={supplierRef}
                     required
                 ></input>
-                <div className='flex justify-between'>
+                <div className='flex justify-between w-full'>
                     <input
-                        className='bg-blue-100 rounded-md px-3 py-1 mb-3 text-black'
+                        className='w-1/2 bg-blue-100 rounded-md px-3 py-1 mb-3 text-black'
                         type='number'
                         min='0'
                         placeholder='Price'
@@ -93,7 +93,7 @@ const AddItem = () => {
                         required
                     ></input>
                     <input
-                        className='bg-blue-100 rounded-md px-3 py-1 mb-3 text-black'
+                        className='w-1/2 bg-blue-100 rounded-md px-3 py-1 mb-3 text-black'
                         type='number'
                         min='0'
                         placeholder='Quantity'
