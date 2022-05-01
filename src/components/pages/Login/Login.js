@@ -74,7 +74,7 @@ const Login = () => {
                         required
                     ></input>
                     <p
-                        className='mb-3'>New manager? Please
+                        className='mb-3'>New manager? Please&nbsp;
                         <Link
                             to='/register'
                             className='text-blue-400 hover:text-blue-500'

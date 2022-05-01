@@ -68,7 +68,7 @@ const Register = () => {
                         required
                     ></input>
                     <p
-                        className='mb-3'>Already have an account?
+                        className='mb-3'>Already have an account?&nbsp;
                         <Link
                             to='/login'
                             className='text-blue-400'
