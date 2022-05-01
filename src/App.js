@@ -4,6 +4,7 @@ import './App.css';
 import AddItem from './components/pages/AddItem/AddItem';
 import AllProducts from './components/pages/AllProducts/AllProducts';
 import Blogs from './components/pages/Blogs/Blogs';
+import Bugs from './components/pages/Bugs/Bugs';
 import Home from './components/pages/Home/Home';
 import Login from './components/pages/Login/Login';
 import Register from './components/pages/Login/Register';
@@ -39,6 +40,7 @@ function App() {
           <MyItems></MyItems>
         </RequireAuth>} />
         <Route path='/blogs' element={<Blogs></Blogs>} />
+        <Route path='/bugs' element={<Bugs></Bugs>} />
         <Route path='*' element={<PageNotFound></PageNotFound>} />
       </Routes>
       <Footer></Footer>

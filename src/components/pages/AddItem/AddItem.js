@@ -69,13 +69,13 @@ const AddItem = () => {
                     ref={imageUrlRef}
                     required
                 ></input>
-                <input
+                <textarea
                     className='bg-blue-100 rounded-md px-3 py-1 mb-3 text-black'
                     type='text'
                     placeholder='Description'
                     ref={descriptionRef}
                     required
-                ></input>
+                ></textarea>
                 <input
                     className='bg-blue-100 rounded-md px-3 py-1 mb-3 text-black'
                     type='text'
