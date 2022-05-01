@@ -37,7 +37,7 @@ const MyItems = () => {
     };
 
     return (
-        <div className='container mx-auto'>
+        <div className='container mx-auto p-3'>
             <h3 className='text-3xl font-semibold my-5'>Items Added By: {user.email}</h3>
             <table className='w-full text-left text-xl mb-5'>
                 <thead>

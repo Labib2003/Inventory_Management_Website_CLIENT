@@ -61,8 +61,8 @@ const UpdateProduct = () => {
                         <span className='font-semibold'>{supplier}</span>
                     </p>
                 </div>
-                <div className='flex mb-3 text-gray-700'>
-                    <p className='mr-3 my-auto'>Quantity:
+                <div className='block md:flex mb-3 text-gray-700'>
+                    <p className='mr-3 my-auto mb-3 md:mb-0'>Quantity:
                         <span className='font-semibold'>{quantity}</span>
                     </p>
                     <button
@@ -73,6 +73,7 @@ const UpdateProduct = () => {
                 <form onSubmit={increaseQuantity} className='mb-5'>
                     <input
                         className='bg-blue-200 rounded-md px-3 py-1 mr-3'
+                        placeholder='Restock This Item'
                         type='number'
                         min='0'
                         ref={quantityIncrementRef}
