@@ -1,3 +1,4 @@
+import { Toaster } from 'react-hot-toast';
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import AddItem from './components/pages/AddItem/AddItem';
@@ -17,6 +18,7 @@ function App() {
   return (
     <div className="App">
       <Navbar></Navbar>
+      <Toaster />
       <Routes>
         <Route path='/' element={<Home></Home>} />
         <Route path='/home' element={<Home></Home>} />

@@ -1,5 +1,6 @@
 import React, { useRef } from 'react';
-import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
+import { useCreateUserWithEmailAndPassword, useSendEmailVerification, useUpdateProfile } from 'react-firebase-hooks/auth';
+import toast from 'react-hot-toast';
 import { Link, useNavigate } from 'react-router-dom';
 import auth from '../../../firebase.init';
 
@@ -7,6 +8,7 @@ const Register = () => {
     const nameRef = useRef('');
     const emailRef = useRef('');
     const passwordRef = useRef('');
+
     const navigate = useNavigate();
 
     const [
@@ -15,16 +17,21 @@ const Register = () => {
         loading,
         error,
     ] = useCreateUserWithEmailAndPassword(auth);
+    const [sendEmailVerification, sending, verificationError] = useSendEmailVerification(
+        auth
+    );
 
     const [updateProfile, updating, updateError] = useUpdateProfile(auth);
 
     const handleCreateUserWithEmailAndPassword = async (event) => {
-        event.preventDefault();
         const name = nameRef.current.value;
         const email = emailRef.current.value;
         const password = passwordRef.current.value;
+        event.preventDefault();
         await createUserWithEmailAndPassword(email, password);
         await updateProfile({ displayName: name });
+        await sendEmailVerification();
+        toast('Check your inbox to verify your email.');
     };
 
     if (user) {
@@ -40,21 +47,21 @@ const Register = () => {
                     className='flex flex-col text-xl'
                 >
                     <input
-                        className='p-3 mb-3 rounded-md'
+                        className='p-3 mb-3 rounded-md bg-blue-100'
                         type='text'
                         placeholder='Name'
                         ref={nameRef}
                         required
                     ></input>
                     <input
-                        className='p-3 mb-3 rounded-md'
+                        className='p-3 mb-3 rounded-md bg-blue-100'
                         type='email'
                         placeholder='Email'
                         ref={emailRef}
                         required
                     ></input>
                     <input
-                        className='p-3 mb-3 rounded-md'
+                        className='p-3 mb-3 rounded-md bg-blue-100'
                         type='password'
                         placeholder='Password'
                         ref={passwordRef}

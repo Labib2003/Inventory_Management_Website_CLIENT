@@ -1,11 +1,13 @@
 import React, { useRef } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../../firebase.init';
-import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import { useSendPasswordResetEmail, useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import toast from 'react-hot-toast';
 
 const Login = () => {
     const emailRef = useRef('');
     const passwordRef = useRef('');
+
     const navigate = useNavigate();
     const location = useLocation();
     const from = location.state?.from?.pathname || "/";
@@ -19,6 +21,10 @@ const Login = () => {
         error,
     ] = useSignInWithEmailAndPassword(auth);
 
+    const [sendPasswordResetEmail, sending, resetError] = useSendPasswordResetEmail(
+        auth
+    );
+
     if (user) {
         navigate(from, { replace: true });
     };
@@ -29,6 +35,13 @@ const Login = () => {
         const password = passwordRef.current.value;
         signInWithEmailAndPassword(email, password);
     };
+
+    const handlePasswordReset = () => {
+        const email = emailRef.current.value;
+        sendPasswordResetEmail(email);
+        toast('Password Reset Email Sent!');
+
+    }
 
     return (
         <div className='container mx-auto'>
@@ -67,6 +80,9 @@ const Login = () => {
                         type='submit'
                         value='Login'
                     ></input>
+                    <p className='mb-3'>
+                        Forgot Password? <span className='font-semibold text-red-400 hover:text-red-500 cursor-pointer' onClick={handlePasswordReset}>Send Password Reset Email.</span>
+                    </p>
                     <button
                         onClick={() => signInWithGoogle()}
                         className='w-2/3 mx-auto text-white bg-blue-400 hover:bg-blue-500 rounded-md px-3 py-1'>Continue With Google
