@@ -6,7 +6,7 @@ const Dashboard = () => {
     const [products] = useProducts();
     return (
         <div className='container mx-auto mb-10'>
-            <h3 className='text-3xl font-semibold mb-5'>Product Stock:</h3>
+            <h3 className='text-3xl text-gray-900 font-semibold mb-5'>Product Stock:</h3>
             <ResponsiveContainer width="95%" height={400}>
                 <BarChart className='mx-auto' data={products}>
                     <CartesianGrid strokeDasharray="3 3" />
