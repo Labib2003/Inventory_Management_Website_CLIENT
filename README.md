@@ -16,10 +16,13 @@ This is a full stack web app to manage your warehouse. In this example I am usin
 * My items route will show all items added by that specific user in a table. The user can delete the items form here as well. Here I used a simple JWT auth system to make the api secure.
 * In the add item route, you can fill a form with necessery data to add a new item in the inventory.
 
-## Library / Frameworks used
+## Technology used
 * ReactJS
 * NodeJS
 * Express
 * MongoDB
 * TailwindCSS
-* Tailwind 
+* Tailwind Starter Kit
+* React Hot Toast
+* Firebase
+* React Firebase Hooks
