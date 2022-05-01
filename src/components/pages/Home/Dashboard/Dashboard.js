@@ -5,7 +5,7 @@ import useProducts from '../../../../hooks/useProducts';
 const Dashboard = () => {
     const [products] = useProducts();
     return (
-        <div className='container mx-auto'>
+        <div className='container mx-auto mb-10'>
             <h3 className='text-3xl font-semibold mb-5'>Product Stock:</h3>
             <BarChart className='mx-auto'
                 width={900}

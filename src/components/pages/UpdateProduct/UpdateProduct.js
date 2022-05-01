@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 const UpdateProduct = () => {
     const { id } = useParams();
@@ -70,7 +70,7 @@ const UpdateProduct = () => {
                         className='text-xl text-white font-semibold bg-blue-400 rounded-md px-3 py-1 hover:bg-blue-500'
                     >Deliver</button>
                 </div>
-                <form onSubmit={increaseQuantity}>
+                <form onSubmit={increaseQuantity} className='mb-5'>
                     <input
                         className='bg-blue-200 rounded-md px-3 py-1 mr-3'
                         type='number'
@@ -83,6 +83,10 @@ const UpdateProduct = () => {
                         value='Restock'
                     ></input>
                 </form>
+                <Link
+                    className='text-xl text-white font-semibold bg-blue-400 rounded-md px-3 py-1 hover:bg-blue-500'
+                    to='/manage'
+                >Manage Inventory</Link>
             </div>
         </div>
     );

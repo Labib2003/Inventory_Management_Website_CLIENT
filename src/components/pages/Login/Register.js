@@ -24,10 +24,10 @@ const Register = () => {
     const [updateProfile, updating, updateError] = useUpdateProfile(auth);
 
     const handleCreateUserWithEmailAndPassword = async (event) => {
+        event.preventDefault();
         const name = nameRef.current.value;
         const email = emailRef.current.value;
         const password = passwordRef.current.value;
-        event.preventDefault();
         await createUserWithEmailAndPassword(email, password);
         await updateProfile({ displayName: name });
         await sendEmailVerification();

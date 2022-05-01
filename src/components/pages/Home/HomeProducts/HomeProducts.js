@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import useProducts from '../../../../hooks/useProducts';
 import Product from '../Product/Product';
 
@@ -9,7 +10,7 @@ const HomeProducts = () => {
     return (
         <div className='container mx-auto mb-10'>
             <h3 className='text-3xl font-semibold mb-5'>Inventory (Total items: {products.length})</h3>
-            <div className='grid grid-cols-2 gap-5'>
+            <div className='grid grid-cols-2 gap-5 mb-5'>
                 {
                     firstSixProducts.map(product => <Product
                         key={product._id}
@@ -17,6 +18,10 @@ const HomeProducts = () => {
                     ></Product>)
                 }
             </div>
+            <Link
+                className='text-xl text-white font-semibold bg-blue-400 rounded-md px-3 py-1 hover:bg-blue-500'
+                to='/manage'
+            >Manage Inventory</Link>
         </div>
     );
 };
