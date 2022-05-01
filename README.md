@@ -26,3 +26,4 @@ This is a full stack web app to manage your warehouse. In this example I am usin
 * React Hot Toast
 * Firebase
 * React Firebase Hooks
+* Heroku
