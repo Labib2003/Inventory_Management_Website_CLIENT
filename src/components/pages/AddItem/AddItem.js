@@ -1,5 +1,6 @@
 import React, { useRef } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import toast from 'react-hot-toast';
 import auth from '../../../firebase.init';
 
 const AddItem = () => {
@@ -39,13 +40,13 @@ const AddItem = () => {
                 priceRef.current.value = 0;
                 quantityRef.current.value = 0;
                 supplierRef.current.value = '';
-                alert("Item succesfully added!");
+                toast.success("Item succesfully added!");
             });
     }
 
     return (
         <div className='container mx-auto p-3'>
-            <h3 className='text-3xl font-semibold my-5'>Fill in this form to add a new item.</h3>
+            <h3 className='text-3xl text-gray-900 font-semibold my-5'>Fill in this form to add a new item.</h3>
             <form onSubmit={handleAddNewItem} className='flex flex-col text-xl w-full md:w-1/2 mx-auto'>
                 <input
                     className='bg-blue-100 rounded-md px-3 py-1 mb-3 text-black'

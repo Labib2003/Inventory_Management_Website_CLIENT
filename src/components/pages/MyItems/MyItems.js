@@ -42,19 +42,19 @@ const MyItems = () => {
             <table className='w-full text-left text-xl mb-5'>
                 <thead>
                     <tr>
-                        <th className='border border-black p-1'>Name</th>
-                        <th className='border border-black p-1'>Quantity</th>
-                        <th className='border border-black p-1'>X</th>
+                        <th className='border border-gray-900 text-gray-900 p-1'>Name</th>
+                        <th className='border border-gray-900 text-gray-900 p-1'>Quantity</th>
+                        <th className='border border-gray-900 text-gray-900 p-1'>X</th>
                     </tr>
                 </thead>
                 <tbody>
                     {
                         myItems.map(product => <tr key={product._id}>
-                            <td className='border border-black p-1'>{product.name}</td>
-                            <td className='border border-black p-1'>{product.quantity}</td>
+                            <td className='border border-gray-900 text-gray-800 p-1'>{product.name}</td>
+                            <td className='border border-gray-900 text-gray-800 p-1'>{product.quantity}</td>
                             <td
                                 onClick={() => handleDelete(product._id)}
-                                className='border border-black p-1 font-semibold text-red-500 hover:text-red-600 cursor-pointer'
+                                className='border border-gray-900 p-1 font-semibold text-red-500 hover:text-red-600 cursor-pointer'
                             >Delete This Product</td>
                         </tr>)
                     }

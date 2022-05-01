@@ -26,27 +26,27 @@ const ManageInvntory = () => {
             <table className='w-full text-left text-xl mb-5'>
                 <thead>
                     <tr>
-                        <th className='border border-black p-1'>Name</th>
-                        <th className='border border-black p-1 hidden md:block'>Added By</th>
-                        <th className='border border-black p-1'>Quantity</th>
-                        <th className='border border-black p-1'>X</th>
+                        <th className='border border-gray-900 text-gray-900 p-1'>Name</th>
+                        <th className='border border-gray-900 text-gray-900 p-1 hidden md:block'>Added By</th>
+                        <th className='border border-gray-900 text-gray-900 p-1'>Quantity</th>
+                        <th className='border border-gray-900 text-gray-900 p-1'>X</th>
                     </tr>
                 </thead>
                 <tbody>
                     {
                         products.map(product => <tr key={product._id}>
-                            <td className='border border-black p-1'>{product.name}</td>
-                            <td className='border border-black p-1 hidden md:block'>{product.user}</td>
-                            <td className='border border-black p-1'>{product.quantity}</td>
+                            <td className='border border-gray-900 text-gray-800 p-1'>{product.name}</td>
+                            <td className='border border-gray-900 text-gray-800 p-1 hidden md:block'>{product.user}</td>
+                            <td className='border border-gray-900 text-gray-800 p-1'>{product.quantity}</td>
                             <td
                                 onClick={() => handleDelete(product._id)}
-                                className='border border-black p-1 font-semibold text-red-500 hover:text-red-600 cursor-pointer'
+                                className='border border-gray-900 p-1 font-semibold text-red-500 hover:text-red-600 cursor-pointer'
                             >Delete This Product</td>
                         </tr>)
                     }
                 </tbody>
             </table>
-            <Link className='text-xl text-white font-semibold bg-blue-400 rounded-md px-3 py-1 hover:bg-blue-500 mx-auto' to='/add'>Add New Item</Link>
+            <Link className='text-xl text-white font-semibold bg-blue-500 rounded-md px-3 py-1 hover:bg-blue-400 mx-auto' to='/add'>Add New Item</Link>
         </div>
     );
 };

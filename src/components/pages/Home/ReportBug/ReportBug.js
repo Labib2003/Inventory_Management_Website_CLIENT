@@ -38,11 +38,11 @@ const ReportBug = () => {
                     // clearing the form
                     titleRef.current.value = '';
                     descriptionRef.current.value = ''
-                    toast('Bug report sent! Thanks for your input.');
+                    toast.success('Bug report sent! Thanks for your input.');
                 });
         }
         else{
-            alert('Please loginto report a bug.')
+            toast.error('Please login to report a bug.')
         }
     }
 
@@ -51,7 +51,7 @@ const ReportBug = () => {
             <div className='flex justify-around'>
                 <img className='hidden md:block w-1/4' src='technical-diff.svg'></img>
                 <div className='my-auto'>
-                    <p className='text-xl font-semibold mb-3'>Having an issue? Report it and we will fix it ASAP!</p>
+                    <p className='text-xl text-gray-800 font-semibold mb-3'>Having an issue? Report it and we will fix it ASAP!</p>
                     <form onSubmit={handleReportBug} className='flex flex-col'>
                         <input
                             className='p-3 mb-3 rounded-md bg-blue-100' type='text'
@@ -65,9 +65,9 @@ const ReportBug = () => {
                             required></textarea>
                         <div className='flex justify-between'>
                             <input
-                                className='text-white bg-blue-400 hover:bg-blue-500 rounded-md px-3 py-1 mb-3 cursor-pointer' type='submit'
+                                className='text-white bg-blue-500 hover:bg-blue-400 rounded-md px-3 py-1 mb-3 cursor-pointer' type='submit'
                                 value='Report Issue'></input>
-                            <Link to='/bugs' className='text-white bg-blue-400 hover:bg-blue-500 rounded-md px-3 py-1 mb-3' >Previous Issues</Link>
+                            <Link to='/bugs' className='text-white bg-blue-500 hover:bg-blue-400 rounded-md px-3 py-1 mb-3' >Previous Issues</Link>
                         </div>
                     </form>
                 </div>

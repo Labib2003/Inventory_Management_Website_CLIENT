@@ -52,9 +52,9 @@ const Login = () => {
     }
 
     return (
-        <div className='container mx-auto'>
-            <div className='w-1/2 mx-auto'>
-                <h3 className='text-3xl font-semibold mb-5 text-left'>Please Login</h3>
+        <div className='container mx-auto p-3'>
+            <div className='w-full md:w-1/2 mx-auto'>
+                <h3 className='text-3xl text-blue-500 font-semibold mb-5 text-left'>Please Login</h3>
                 <form
                     className='flex flex-col text-xl'
                     onSubmit={handleSignInWithEmailAndPass}
@@ -74,26 +74,26 @@ const Login = () => {
                         required
                     ></input>
                     <p
-                        className='mb-3'>New manager? Please&nbsp;
+                        className='mb-3 text-gray-800'>New? Please&nbsp;
                         <Link
                             to='/register'
-                            className='text-blue-400 hover:text-blue-500'
+                            className='text-blue-500 hover:text-blue-400'
                         >Register</Link>.
                     </p>
                     <p className='text-red-500 font-semibold mb-3'>
                         {(error || googleError) ? `${error ? error?.message : ''} ${googleError ? googleError?.message : ''}` : ''}
                     </p>
                     <input
-                        className='w-2/3 mx-auto text-white bg-blue-400 hover:bg-blue-500 rounded-md px-3 py-1 mb-3'
+                        className='w-2/3 mx-auto text-white bg-blue-500 hover:bg-blue-400 rounded-md px-3 py-1 mb-3'
                         type='submit'
                         value='Login'
                     ></input>
-                    <p className='mb-3'>
+                    <p className='mb-3 text-gray-800'>
                         Forgot Password? <span className='font-semibold text-red-400 hover:text-red-500 cursor-pointer' onClick={handlePasswordReset}>Send Password Reset Email.</span>
                     </p>
                     <button
                         onClick={() => signInWithGoogle()}
-                        className='w-2/3 mx-auto text-white bg-blue-400 hover:bg-blue-500 rounded-md px-3 py-1'>Continue With Google
+                        className='w-2/3 mx-auto text-white bg-blue-500 hover:bg-blue-400 rounded-md px-3 py-1'>Continue With Google
                     </button>
                 </form>
             </div>

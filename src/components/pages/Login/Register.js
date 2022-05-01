@@ -39,9 +39,9 @@ const Register = () => {
     }
 
     return (
-        <div className='container mx-auto'>
-            <div className='w-1/2 mx-auto'>
-                <h3 className='text-3xl font-semibold mb-5 text-left'>Please Register</h3>
+        <div className='container mx-auto p-3'>
+            <div className='wfull md:w-1/2 mx-auto'>
+                <h3 className='text-3xl font-semibold mb-5 text-left text-blue-500'>Please Register</h3>
                 <form
                     onSubmit={handleCreateUserWithEmailAndPassword}
                     className='flex flex-col text-xl'
@@ -68,14 +68,14 @@ const Register = () => {
                         required
                     ></input>
                     <p
-                        className='mb-3'>Already have an account?&nbsp;
+                        className='mb-3 text-gray-800'>Already have an account?&nbsp;
                         <Link
                             to='/login'
                             className='text-blue-400'
                         >Login</Link>.
                     </p>
                     <input
-                        className='w-2/3 mx-auto text-white bg-blue-400 hover:bg-blue-500 rounded-md px-3 py-1 mb-3'
+                        className='w-2/3 mx-auto text-white bg-blue-500 hover:bg-blue-400 rounded-md px-3 py-1 mb-3'
                         type='submit'
                         value='Register'
                     ></input>

@@ -9,7 +9,7 @@ const HomeProducts = () => {
 
     return (
         <div className='container mx-auto mb-10'>
-            <h3 className='text-3xl font-semibold mb-5'>Inventory (Total items: {products.length})</h3>
+            <h3 className='text-3xl text-gray-900 font-semibold mb-5'>Inventory (Total items: {products.length})</h3>
             <div className='grid grid-cols-1 lg:grid-cols-2 gap-5 mb-5'>
                 {
                     firstSixProducts.map(product => <Product
@@ -19,7 +19,7 @@ const HomeProducts = () => {
                 }
             </div>
             <Link
-                className='text-xl text-white font-semibold bg-blue-400 rounded-md px-3 py-1 hover:bg-blue-500'
+                className='text-xl text-white font-semibold bg-blue-500 rounded-md px-3 py-1 hover:bg-blue-400'
                 to='/manage'
             >Manage Inventory</Link>
         </div>
