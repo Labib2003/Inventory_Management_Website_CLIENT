@@ -20,7 +20,7 @@ const ReportBug = () => {
         const title = titleRef.current.value;
         const description = descriptionRef.current.value;
         if (user) {
-            fetch('http://localhost:5000/bugs', {
+            fetch('https://floating-retreat-93986.herokuapp.com/bugs', {
                 method: 'POST',
                 body: JSON.stringify({
                     title: title,

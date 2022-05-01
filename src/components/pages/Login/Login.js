@@ -30,7 +30,7 @@ const Login = () => {
         const email = emailRef.current.value;
         const password = passwordRef.current.value;
         await signInWithEmailAndPassword(email, password);
-        fetch('http://localhost:5000/login', {
+        fetch('https://floating-retreat-93986.herokuapp.com/login', {
             method: 'POST',
             body: JSON.stringify({email: email}),
             headers: {

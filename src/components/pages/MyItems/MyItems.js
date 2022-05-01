@@ -9,7 +9,7 @@ const MyItems = () => {
 
     useEffect(() => {
         const email = user.email
-        fetch(`http://localhost:5000/myItems?email=${email}`, {
+        fetch(`https://floating-retreat-93986.herokuapp.com/myItems?email=${email}`, {
             method: "GET",
             headers: {
                 'authorization': `${localStorage.getItem('accessToken')}`,
@@ -21,7 +21,7 @@ const MyItems = () => {
     }, [user]);
 
     const handleDelete = (id) => {
-        const url = `http://localhost:5000/products/${id}`;
+        const url = `https://floating-retreat-93986.herokuapp.com/products/${id}`;
         const confirm = window.confirm("Are you sure?");
         if (confirm) {
             fetch(url, {

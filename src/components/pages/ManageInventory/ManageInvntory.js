@@ -6,7 +6,7 @@ const ManageInvntory = () => {
     const [products, setProducts] = useProducts();
 
     const handleDelete = (id) => {
-        const url = `http://localhost:5000/products/${id}`;
+        const url = `https://floating-retreat-93986.herokuapp.com/products/${id}`;
         const confirm = window.confirm("Are you sure?");
         if (confirm) {
             fetch(url, {

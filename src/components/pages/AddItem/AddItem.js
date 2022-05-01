@@ -14,7 +14,7 @@ const AddItem = () => {
 
     const handleAddNewItem = (event) => {
         event.preventDefault();
-        fetch('http://localhost:5000/products', {
+        fetch('https://floating-retreat-93986.herokuapp.com/products', {
             method: 'POST',
             body: JSON.stringify({
                 name: nameRef.current.value,
