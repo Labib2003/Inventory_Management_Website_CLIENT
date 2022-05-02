@@ -1,9 +1,13 @@
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 
 const PageNotFound = () => {
-    return (
+        return (
         <div className='container mx-auto'>
+            <Helmet>
+                <title>404 :(</title>
+            </Helmet>
             <div className="px-40 py-20 bg-white rounded-md shadow-xl shadow-blue-400">
                 <div className="flex flex-col items-center">
                     <h1 className="font-bold text-blue-500 text-5xl">404</h1>

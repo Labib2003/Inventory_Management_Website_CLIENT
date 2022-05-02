@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import auth from "../../firebase.init";
 
 export default function Navbar({ fixed }) {
+    // navbar from tailwind starter kit
     const [navbarOpen, setNavbarOpen] = React.useState(false);
     const [user, loading, error] = useAuthState(auth);
     const handleLogut = () => {

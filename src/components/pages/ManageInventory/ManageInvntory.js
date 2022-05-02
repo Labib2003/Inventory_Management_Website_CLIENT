@@ -1,10 +1,12 @@
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import useProducts from '../../../hooks/useProducts';
 
 const ManageInvntory = () => {
     const [products, setProducts] = useProducts();
 
+    // deleting product using _id as search parameter
     const handleDelete = (id) => {
         const url = `https://floating-retreat-93986.herokuapp.com/products/${id}`;
         const confirm = window.confirm("Are you sure?");
@@ -23,6 +25,9 @@ const ManageInvntory = () => {
 
     return (
         <div className='container mx-auto p-3'>
+            <Helmet>
+                <title>ManageInventory - EasyInventory</title>
+            </Helmet>
             <table className='w-full text-left text-xl mb-5'>
                 <thead>
                     <tr>

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import useProducts from '../../../../hooks/useProducts';
-import Product from '../Product/Product';
+import Product from '../../../sharedComponents/Product';
 
 const HomeProducts = () => {
     const [products] = useProducts();

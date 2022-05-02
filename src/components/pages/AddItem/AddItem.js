@@ -1,9 +1,11 @@
 import React, { useRef } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import { Helmet } from 'react-helmet-async';
 import toast from 'react-hot-toast';
 import auth from '../../../firebase.init';
 
 const AddItem = () => {
+    // using useRef to get input values
     const nameRef = useRef('');
     const imageUrlRef = useRef('');
     const descriptionRef = useRef('');
@@ -13,6 +15,7 @@ const AddItem = () => {
 
     const [user, loading, error] = useAuthState(auth);
 
+    // sending the new product data
     const handleAddNewItem = (event) => {
         event.preventDefault();
         fetch('https://floating-retreat-93986.herokuapp.com/products', {
@@ -46,6 +49,9 @@ const AddItem = () => {
 
     return (
         <div className='container mx-auto p-3'>
+            <Helmet>
+                <title>AddItems - EasyInventory</title>
+            </Helmet>
             <h3 className='text-3xl text-gray-900 font-semibold my-5'>Fill in this form to add a new item.</h3>
             <form onSubmit={handleAddNewItem} className='flex flex-col text-xl w-full md:w-1/2 mx-auto'>
                 <input

@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import { Helmet } from 'react-helmet-async';
 import auth from '../../../firebase.init';
 
 const MyItems = () => {
@@ -7,8 +8,9 @@ const MyItems = () => {
 
     const [myItems, setMyItems] = useState([]);
 
+    // showing the items added by the user using jwt token. since i did not create a jwt token for google users, they will not be able to use this section
     useEffect(() => {
-        const email = user.email
+        const email = user.email;
         fetch(`https://floating-retreat-93986.herokuapp.com/myItems?email=${email}`, {
             method: "GET",
             headers: {
@@ -38,6 +40,9 @@ const MyItems = () => {
 
     return (
         <div className='container mx-auto p-3'>
+            <Helmet>
+                <title>MyItems - EasyInventory</title>
+            </Helmet>
             <h3 className='text-3xl font-semibold my-5'>Items Added By: {user.email}</h3>
             <table className='w-full text-left text-xl mb-5'>
                 <thead>

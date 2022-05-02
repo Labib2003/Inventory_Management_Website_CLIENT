@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import auth from '../../../../firebase.init';
 
 const ReportBug = () => {
+    // using useRef to get the input values
     const titleRef = useRef('');
     const descriptionRef = useRef('');
 
@@ -15,6 +16,7 @@ const ReportBug = () => {
 
     const [user, loading, error] = useAuthState(auth);
 
+    // taking the bug report and sending it to the server with the users name and current time
     const handleReportBug = (event) => {
         event.preventDefault();
         const title = titleRef.current.value;

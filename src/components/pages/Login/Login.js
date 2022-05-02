@@ -3,8 +3,10 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../../firebase.init';
 import { useSendPasswordResetEmail, useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import toast from 'react-hot-toast';
+import { Helmet } from 'react-helmet-async';
 
 const Login = () => {
+    // using useRef to get the inputvalues
     const emailRef = useRef('');
     const passwordRef = useRef('');
 
@@ -25,6 +27,7 @@ const Login = () => {
         auth
     );
 
+    // creating a jwt token for email-pass login
     const handleSignInWithEmailAndPass = async (event) => {
         event.preventDefault();
         const email = emailRef.current.value;
@@ -47,12 +50,14 @@ const Login = () => {
     const handlePasswordReset = () => {
         const email = emailRef.current.value;
         sendPasswordResetEmail(email);
-        toast('Password Reset Email Sent!');
-
+        toast.success('Password Reset Email Sent!');
     }
 
     return (
         <div className='container mx-auto p-3'>
+            <Helmet>
+                <title>Login - EasyInventory</title>
+            </Helmet>
             <div className='w-full md:w-1/2 mx-auto'>
                 <h3 className='text-3xl text-blue-500 font-semibold mb-5 text-left'>Please Login</h3>
                 <form

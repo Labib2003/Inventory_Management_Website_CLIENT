@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { Link, useParams } from 'react-router-dom';
 
 const UpdateProduct = () => {
@@ -19,6 +20,7 @@ const UpdateProduct = () => {
             .then(data => setProduct(data));
     }, [updateMsg]);
 
+    // increasing or decreasing the quantity
     const updateQuantity = (newQuantity) => {
         const url = `https://floating-retreat-93986.herokuapp.com/products/${id}`;
         fetch(url, {
@@ -48,6 +50,9 @@ const UpdateProduct = () => {
 
     return (
         <div className='container mx-auto flex flex-col md:flex-row p-3'>
+            <Helmet>
+                <title>UpdateProduct - EasyInventory</title>
+            </Helmet>
             <img className='w-full md:w-1/3 mb-5 md:mb-0 mx-auto mr-10' src={image}></img>
             <div className='text-left my-auto'>
                 <h3 className='text-3xl text-gray-900 font-semibold mb-5'>{name}</h3>

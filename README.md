@@ -24,6 +24,7 @@ This is a full stack web app to manage your warehouse. In this example I am usin
 * TailwindCSS
 * Tailwind Starter Kit
 * React Hot Toast
+* React Helmet Async
 * Firebase
 * React Firebase Hooks
 * Heroku
